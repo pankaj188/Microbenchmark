@@ -2,7 +2,8 @@
 
 1. Set Up Google Benchmark:
 
-`First, make sure you have the Google Benchmark library installed. You can follow the installation instructions on the Google Benchmark GitHub page.`
+`First, make sure you have the Google Benchmark library installed. You can follow the installation instructions on `
+![Google Benchmark GitHub page](https://github.com/google/benchmark)
 
 2. Build Your Benchmark Project:
 ```
