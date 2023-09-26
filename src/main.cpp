@@ -1,3 +1,4 @@
+#include <iostream>
 #include "OrderBook.h"
 #include "MarketDataGenerator.h"
 #include "OrderMatchingAlgorithm.h"
@@ -12,18 +13,27 @@ int main() {
         Order marketOrder = dataGenerator.generateOrder();
 
         if (i % 2 == 0) {
+            // Add order
             orderBook.addOrder(marketOrder);
+            std::cout << "Added order: Order ID " << marketOrder.orderId << std::endl;
         } else {
-            orderBook.modifyOrder(marketOrder);
+            // Modify order (for demonstration purposes)
+            marketOrder.quantity = 10; // Modify quantity
+            bool modified = orderBook.modifyOrder(marketOrder.orderId, marketOrder);
+            if (modified) {
+                std::cout << "Modified order: Order ID " << marketOrder.orderId << std::endl;
+            } else {
+                std::cout << "Order not found for modification: Order ID " << marketOrder.orderId << std::endl;
+            }
         }
 
-        // Implement any other simulation logic as needed
+        // Perform other simulation logic as needed
     }
 
     // Perform order matching
     OrderMatchingAlgorithm::matchOrders(orderBook);
 
-    // Print results or perform additional operations
+    // Print order book or perform additional operations
 
     return 0;
 }
