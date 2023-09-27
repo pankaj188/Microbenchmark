@@ -3,7 +3,7 @@
 
 void OrderMatchingAlgorithm::matchOrders(OrderBook& orderBook) {
     // This is a simplified example of a basic order matching algorithm
-    // You may need to optimize and enhance it for your specific requirements
+    // May need to optimize and enhance it for your specific requirements
 
     // Sort the buy and sell orders by price and time priority
     std::sort(orderBook.buyOrders.begin(), orderBook.buyOrders.end(),
@@ -27,7 +27,7 @@ void OrderMatchingAlgorithm::matchOrders(OrderBook& orderBook) {
     auto sellIt = orderBook.sellOrders.begin();
 
     while (buyIt != orderBook.buyOrders.end() && sellIt != orderBook.sellOrders.end()) {
-        if (buyIt->price >= sellIt->price) {
+        if (sellIt->price >= buyIt->price) {
             // Match the orders
             int matchedQuantity = std::min(buyIt->quantity, sellIt->quantity);
 

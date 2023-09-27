@@ -3,7 +3,7 @@
 OrderBook::OrderBook() {
     buyOrders.clear();
     sellOrders.clear();
-    // Initialize your order book data structures here
+    // Initialize order book data structures here
 }
 
 void OrderBook::addOrder(const Order& order) {
@@ -19,14 +19,14 @@ void OrderBook::addOrder(const Order& order) {
         return;
     }
 
-    if (order.price < 0.01 || order.price > 1000.0) {
+    if (order.price < 1.0 || order.price > 1000.0) {
         cout<<"Order price Should be within a range"<<endl;
         // Implement price range checks based on  market rules
         return;
     }
 
     // Add the order to the appropriate side of the order book (buy or sell)
-    if (order.price >= 0.01 && order.price <= 1000.0 /* some condition to determine if it's a buy order */) {
+    if (order.price >= 1.0 && order.price <= 500.0 /* condition to determine if it's a buy order */) {
         // This is a buy order
         buyOrders.push_back(order);
     } else {
