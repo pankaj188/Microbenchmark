@@ -11,7 +11,6 @@ MarketDataGenerator::MarketDataGenerator() {
 
 Order MarketDataGenerator::generateOrder() {
     // Implement logic to generate random order data Order order;
-    // Set order fields based on requirements
     order.orderId = orderIdDistribution(generator);
     order.price = priceDistribution(generator);
     order.quantity = quantityDistribution(generator);

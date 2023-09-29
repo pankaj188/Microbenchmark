@@ -1,3 +1,4 @@
+#include <iostream>
 #include <benchmark/benchmark.h>
 #include "OrderBook.h"
 #include "MarketDataGenerator.h"
@@ -51,3 +52,5 @@ static void BM_MatchOrders(benchmark::State& state) {
     }
 }
 BENCHMARK(BM_MatchOrders);
+
+BENCHMARK_MAIN();

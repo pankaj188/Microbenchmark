@@ -8,19 +8,19 @@ OrderBook::OrderBook() {
 
 void OrderBook::addOrder(const Order& order) {
      if (order.quantity <= 0) {
-        cout<<"Order quantity Should be a Positive Value"<<endl;
+        logger.log("Order quantity Should be a Positive Value");
         // Ignore orders with non-positive quantities
         return;
     }
 
     if (order.price <= 0.0) {
-        cout<<"Order price Should be a Positive Value"<<endl;
+        logger.log("Order price Should be a Positive Value");
         // Ignore orders with non-positive prices
         return;
     }
 
     if (order.price < 1.0 || order.price > 1000.0) {
-        cout<<"Order price Should be within a range"<<endl;
+        logger.log("Order price Should be within a range");
         // Implement price range checks based on  market rules
         return;
     }
