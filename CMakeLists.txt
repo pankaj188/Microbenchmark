@@ -3,9 +3,10 @@ cmake_minimum_required(VERSION 3.27.6)
 project(Microbenchmark)
 # Set the C++ standard to C++11 or higher
 set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_PREFIX_PATH "/benchmark")
 find_package(benchmark REQUIRED)
 add_subdirectory(benchmark)
-target_link_libraries(benchmarks.cpp benchmark::benchmark)
+target_link_libraries(benchmarks.cpp PRIVATE benchmark::benchmark)
 # Add your source files here
 set(SOURCE_FILES
     main.cpp

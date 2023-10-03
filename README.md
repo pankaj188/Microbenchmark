@@ -7,19 +7,18 @@
 
 2. Build Your Benchmark Project:
 
-`After Installation of Google Benchmark library. while Building Benchmark . Below Error is shown ``
-```
-By not providing "Findbenchmark.cmake" in CMAKE_MODULE_PATH this project
-  has asked CMake to find a package configuration file provided by
-  "benchmark", but CMake did not find one.
+`After Installation of Google Benchmark library. Following installation process using cmake Below CMake Error is shown ``
 
+```
+CMake Error: cmake version 3.27.6
 
 ```
 3. Run the Benchmarks:
 ``
-CMake Error: CMAKE_CXX_COMPILER not set, after EnableLanguage
--- Configuring incomplete, errors occurred!
--- Configuring incomplete, errors occurred!
+Could not find a package configuration file provided by "benchmark" with any of the following names:
+ benchmarkConfig.cmake
+ benchmark-config.cmake
 ``
+`This error message suggests that CMake is unable to locate the configuration files for the "benchmark" library. ``
 
 
