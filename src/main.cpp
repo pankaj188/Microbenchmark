@@ -3,15 +3,17 @@
 #include <vector>
 #include <mutex>
 #include <condition_variable>
-#include "OrderBook.h"
-#include "MarketDataGenerator.h"
-#include "OrderMatchingAlgorithm.h"
+#include <OrderBook.h>
+#include <MarketDataGenerator.h>
+#include <OrderMatchingAlgorithm.h>
+
 
 // Function to simulate order Addition
 void simulateOrderAddition(OrderBook& orderBook, MarketDataGenerator& dataGenerator) {
 
     // order addition logic
-    while (true) {
+    while (true) // primarily for simulation purposes, allowing to continuously simulate order-related operations in an HFT system.
+    {
         Order marketOrder = dataGenerator.generateOrder();
         
         // Add the generated order to the order book
@@ -22,13 +24,14 @@ void simulateOrderAddition(OrderBook& orderBook, MarketDataGenerator& dataGenera
 }
 
 // Function to simulate order Modification
-void simulateOrderModification(OrderBook& orderBook) {
+void simulateOrderModification(OrderBook& orderBook, MarketDataGenerator& dataGenerator) {
 
         //order modification logic
 
-        while (true) {
+        while (true) //allowing to continuously simulate order-related operations in an HFT system.
+        {
 
-        Order marketOrder.quantity = 10; // Modify quantity
+        Order marketOrder = dataGenerator.generateOrder();
 
         bool modified = orderBook.modifyOrder(marketOrder.orderId, marketOrder);
         if (modified) {
@@ -37,9 +40,6 @@ void simulateOrderModification(OrderBook& orderBook) {
             logger.log("Order not found for modification: Order ID");
         }
         
-        // Modify the order in the order book using the order ID
-        orderBook.modifyOrder(marketOrder.orderId, marketOrder);
-        
     }
 }
 
@@ -47,50 +47,56 @@ void simulateOrderModification(OrderBook& orderBook) {
 void simulateOrderCancellation(OrderBook& orderBook, MarketDataGenerator& dataGenerator) {
 
     // Simulate order modification logic
-    
-    while (true) {
+
+    while (true) //allowing to continuously simulate order-related operations in an HFT system.
+    {
         Order cancelledOrder = dataGenerator.generateOrder();
 
-        orderBook.cancelOrder(cancelledOrder.orderID);
+        bool canceled = orderBook.cancelOrder(cancelledOrder.orderID);
+        if (canceled) {
+            logger.log("Canceled order: Order ID");
+        } else {
+            logger.log("Order not found for Cancellation: Order ID");
+        }
         
     }
 }
 
 
+
 int main() {
-    // Create instances of OrderBook and MarketDataGenerator
+
+    // Create instances of OrderBook , orderMatch,and MarketDataGenerator
     OrderBook orderBook;
     MarketDataGenerator dataGenerator;
+    OrderMatchingAlgorithm orderMatch;
 
-    Logger logger("logOrderBook.txt");
+    Logger logger("LogOrderBook.txt");
+    logger.log("Starting HFT order book system...");
 
-    // Create a thread to simulate order addition
+    // Create thread to simulate order addition
     std::thread additionThread(simulateOrderAddition, std::ref(orderBook), std::ref(dataGenerator));
 
-    // Create threads for order modification
-    std::thread modificationThread(simulateOrderModification, std::ref(orderBook));
+    // Create threads to simulate order modification
+    std::thread modificationThread(simulateOrderModification, std::ref(orderBook), std::ref(dataGenerator));
+    
     // Create a thread for order cancellation
-
     std::thread cancellationThread(simulateOrderCancellation, std::ref(orderBook), std::ref(dataGenerator));
 
 
-
-    // Optionally, join (wait for) the modification and matching threads to finish
+    // Optionally, join (wait for) the addition thread to finish
     additionThread.join();
 
-    // Optionally, join (wait for) the modification and matching threads to finish
+    // Optionally, join (wait for) the modification thread to finish
     modificationThread.join();
 
     // Optionally, join (wait for) the cancellation thread to finish
     cancellationThread.join();
-
     
     }
 
     // Perform order matching
-    OrderMatchingAlgorithm::matchOrders(orderBook);
-
-    // Print order book or perform additional operations
+    orderMatch.matchOrders(orderBook);
 
     return 0;
 }

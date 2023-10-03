@@ -64,18 +64,18 @@ bool OrderBook::modifyOrder(int orderId, const Order& modifiedOrder) {
 
 bool OrderBook::cancelOrder(int orderId) {
     // Find the order in the order book based on its orderId
-    for (auto it = buyOrders.begin(); it != buyOrders.end(); ++it) {
-        if (it->orderId == orderId) {
+    for (auto& order:buyOrders) {
+        if (order.orderId == orderId) {
             // Erase the order from the buyOrders vector
-            buyOrders.erase(it);
+            buyOrders.erase(order);
             return true; // Order was canceled
         }
     }
 
-    for (auto it = sellOrders.begin(); it != sellOrders.end(); ++it) {
-        if (it->orderId == orderId) {
+    for (auto& order:sellOrders) {
+        if (order.orderId == orderId) {
             // Erase the order from the sellOrders vector
-            sellOrders.erase(it);
+            sellOrders.erase(order);
             return true; // Order was canceled
         }
     }

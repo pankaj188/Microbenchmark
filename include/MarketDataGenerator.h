@@ -11,8 +11,6 @@ public:
 
     Order generateOrder();
 
-    // Add more methods for generating market data as needed
-
 private:
     std::default_random_engine generator;
      std::uniform_int_distribution<int> orderIdDistribution;

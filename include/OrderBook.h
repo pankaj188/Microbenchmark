@@ -9,7 +9,6 @@ struct Order {
     int orderId;
     double price;
     int quantity;
-    // Add more fields as needed
 };
 
 class OrderBook {
