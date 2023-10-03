@@ -7,14 +7,18 @@
 
 2. Build Your Benchmark Project:
 
-```After Installation of Google Benchmark library. Following installation process using cmake gives Below CMake Error 
-CMake Error: cmake version 3.27.6```
+```
+After Installation of Google Benchmark library. Following installation process using cmake gives Below CMake Error 
+CMake Error: cmake version 3.27.6
+```
 
 3. Run the Benchmarks:
 
-```Could not find a package configuration file provided by "benchmark" with any of the following names:
+```
+Could not find a package configuration file provided by "benchmark" with any of the following names:
  benchmarkConfig.cmake
- benchmark-config.cmake```
+ benchmark-config.cmake
+ ```
 `This error message suggests that CMake is unable to locate the configuration files for the "benchmark" library.`
 
 
